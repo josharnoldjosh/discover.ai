@@ -9,7 +9,7 @@ Created on Sat Jan 20 10:29:23 2018
 class param:
     
     # Number of epochs
-    epochs = 400 # 80
+    epochs = 200 # 200
     
     # Batch size
     batch_size = 10000

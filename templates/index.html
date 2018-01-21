@@ -1,1 +1,63 @@
-hello world
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>discover.ai</title>
+    <meta name="description" content="A.I for drug discovery.">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+      <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+      <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+      <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+      <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+      <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+  </head>
+
+  <body style="background-color: rgba(220,220,220,0.28)">
+
+  <nav class="navbar" style=" border-bottom: solid; border-bottom-color: #abdffe; border-bottom-width: thin; text-align: center">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="color: deepskyblue; padding-left: 20px; font-size: 20px; ">discover.ai</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="background-color: transparent !important; color: deepskyblue; padding-right:50px">Home</a></li>
+        <li><a href="#" style="background-color: transparent !important; color:deepskyblue; padding-right:50px">About Us</a></li>
+        <li><a href="#"style="background-color: transparent !important; color:deepskyblue; padding-right:50px">Upload</a></li>
+      </ul>      
+    </div>
+  </nav>
+
+  <div class = "title">
+    <h1 style="font-size: 65px; padding-bottom: 1cm; font-weight: 300"> A.I. for drug discovery  </h1>
+    <a class = "button1" onclick="load_page()"> enter </a>
+  </div>
+
+    <div id = "particles-js" ></div>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <script type="text/javascript">
+      function load_page() {
+          $.ajax({
+          url: 'http://127.0.0.1:5000/upload',      
+          type: 'GET',      
+          method: 'GET',
+          processData: false,             
+          success: function(response) {
+            console.log("Success");
+              $("body").html(response); 
+            }
+          });
+    }
+    </script>
+
+    
+  </body>
+</html>

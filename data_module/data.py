@@ -8,8 +8,8 @@ Created on Sat Jan 20 10:20:58 2018
 
 import pandas as pd
 from sklearn.preprocessing import minmax_scale
-#import matplotlib.pyplot as plt
 import os
+import numpy as np
 
 class preprocessing:
     
@@ -67,6 +67,30 @@ class preprocessing:
         return X_train, X_test, y_train, y_test
     
 class postprocessing:
+    
+    def create_string_array(data):
+        
+        array = []
+                    
+        for i in range(0, len(data)):
+            pred = data[i]
+            text = str(i+1) + ") " + "Molecule " + str(pred[0]+1) + " binding prediction: " + str(pred[1]) + "\n"
+            array.append(text)
+        
+        return array
+    
+    def create_tuple_array(data):
+        
+        array = []
+                    
+        for i in range(0, len(data)):
+            pred = data[i]
+            
+            bias = 0.01
+            result = (pred[0]+1, np.around((pred[1]*100)-bias, decimals=2))
+            array.append(result)
+        
+        return array
         
     def write_output(data):
         

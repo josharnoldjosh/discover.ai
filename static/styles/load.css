@@ -1,0 +1,155 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(30, 54, 60, 0)), to(rgba(66, 66, 72, 0)));
+  background: linear-gradient(to right, rgba(30, 54, 60, 0), rgba(19, 22, 24, 0));
+  -webkit-transform: scale(1.2, 1.2);
+          transform: scale(1.2, 1.2);
+  overflow: hidden;
+}
+body > div {
+  border-radius: 50%;
+  border: 3.5px solid rgba(15, 42, 45, 0.11);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(80deg) rotateY(20deg);
+          transform: rotateX(80deg) rotateY(20deg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -100px;
+}
+body > div:first-of-type:after {
+  content: "";
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background: rgba(74, 72, 75, 0.15);
+  border-radius: 50%;
+  -webkit-transform: rotateX(-80deg) rotateY(0);
+          transform: rotateX(-80deg) rotateY(0);
+  -webkit-box-shadow: 0 0 25px #35fdff;
+          box-shadow: 0 0 25px #1afaff;
+  -webkit-animation: nucleus_ 2s infinite linear;
+          animation: nucleus_ 2s infinite linear;
+  left: 50%;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+body > div:nth-of-type(2) {
+  -webkit-transform: rotateX(-80deg) rotateY(20deg);
+          transform: rotateX(-80deg) rotateY(20deg);
+}
+body > div:nth-of-type(2) > div,
+body > div:nth-of-type(2) > div:after {
+  -webkit-animation-delay: -.5s;
+          animation-delay: -.5s;
+}
+body > div:nth-of-type(3) {
+  -webkit-transform: rotateX(-70deg) rotateY(60deg);
+          transform: rotateX(-70deg) rotateY(60deg);
+}
+body > div:nth-of-type(3) > div,
+body > div:nth-of-type(3) > div:after {
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+body > div:nth-of-type(4) {
+  -webkit-transform: rotateX(70deg) rotateY(60deg);
+          transform: rotateX(70deg) rotateY(60deg);
+}
+body > div:nth-of-type(4) > div,
+body > div:nth-of-type(4) > div:after {
+  -webkit-animation-delay: -1.5s;
+          animation-delay: -1.5s;
+}
+body > div > div {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: trail_ 2s infinite linear;
+          animation: trail_ 2s infinite linear;
+}
+body > div > div:after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  -webkit-box-shadow: 0 0 12px #56f2ff;
+          box-shadow: 0 0 12px #56f2ff;
+  left: 50%;
+  margin-left: -5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #62faff;
+  -webkit-animation: particle_ 2s infinite linear;
+          animation: particle_ 2s infinite linear;
+}
+
+@-webkit-keyframes trail_ {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+
+@keyframes trail_ {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+@-webkit-keyframes particle_ {
+  from {
+    -webkit-transform: rotateX(90deg) rotateY(0deg);
+            transform: rotateX(90deg) rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateX(90deg) rotateY(-360deg);
+            transform: rotateX(90deg) rotateY(-360deg);
+  }
+}
+@keyframes particle_ {
+  from {
+    -webkit-transform: rotateX(90deg) rotateY(0deg);
+            transform: rotateX(90deg) rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateX(90deg) rotateY(-360deg);
+            transform: rotateX(90deg) rotateY(-360deg);
+  }
+}
+@-webkit-keyframes nucleus_ {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 0 transparent;
+            box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 25px #56f2ff;
+            box-shadow: 0 0 25px #56f2ff;
+  }
+}
+@keyframes nucleus_ {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 0 transparent;
+            box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 25px #56f2ff;
+            box-shadow: 0 0 25px #56f2ff;
+  }
+}

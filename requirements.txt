@@ -6,3 +6,4 @@ scikit-learn==0.18.1
 numpy==1.12.1
 pandas==0.20.1
 sklearn
+h5py

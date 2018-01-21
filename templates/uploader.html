@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+	<style>	
+	</style>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    
+      <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+      <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+      <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+      <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+      <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+    <title>discover.ai</title>
+</head>
+
+
+
+<body>
+<nav class="navbar" style=" border-bottom: solid; border-bottom-color: #abdffe; border-bottom-width: thin; text-align: center">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color: deepskyblue; padding-left: 20px; font-size: 20px; ">discover.ai</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" style="background-color: transparent !important; color: deepskyblue; padding-right:50px">Home</a></li>
+      <li><a href="#" style="background-color: transparent !important; color:deepskyblue; padding-right:50px">About Us</a></li>
+      <li><a href="#"style="background-color: transparent !important; color:deepskyblue; padding-right:50px">Upload</a></li>
+    </ul>
+    <!--<button class="btn btn-danger navbar-btn">Button</button>-->
+  </div>
+</nav>
+
+<div w3-include-html="/nav.html"></div>
+<script>
+</script>
+
+<div>
+<div style="z-index: 1; opacity: 0.5;" class="container">
+  <div class=col-lg-12>
+    <div class = "droppable" style="position: absolute;
+                padding: 275px;
+                text-align: center;
+                top:35%;
+                width: 100%;"
+         id="drop_zone" class="well"><h1>Drop your CSV here</h1></center>
+    </div>
+  </div>
+</div>
+
+<div style="z-index: 0" id = "particles-js" ></div>
+<script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+<script>
+
+  //var csvParse = require("csv-parse")
+  function makeDroppable(element, callback) {
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('multiple', true);
+    input.style.display = 'none';
+
+    input.addEventListener('change', triggerCallback);
+    element.appendChild(input);
+
+    element.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      element.classList.add('dragover');
+    });
+
+    element.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      element.classList.remove('dragover');
+    });
+
+    element.addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      element.classList.remove('dragover');
+      triggerCallback(e);
+    });
+
+    element.addEventListener('click', function() {
+      input.value = null;
+      input.click();
+    });
+
+    function triggerCallback(e) {
+      var files;
+      if(e.dataTransfer) {
+        files = e.dataTransfer.files;
+      } else if(e.target) {
+        files = e.target.files;
+      }
+      callback.call(null, files);
+    }
+  }
+  var element = document.querySelector('.droppable');
+  makeDroppable(element, callback);
+
+  function callback(files) {
+    console.log(files);
+
+    $.ajax({
+      url: 'http://127.0.0.1:5000/load',      
+      type: 'GET',         
+      method: 'GET',
+      processData: false,             
+      success: function(response) {
+  
+      		console.log("Success");
+
+      		$("body").html(response); 
+      }
+    });
+  }
+</script>
+</body>
+</html>
