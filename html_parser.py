@@ -307,7 +307,7 @@ class text_parser:
                 <div id="chartdiv2"></div>
             </div>
             <div class="col-lg-6 col-sm-12">
-                <h1>Molecules binding probabilities</h1>
+                <h1>Molecule binding probability\nfor Mitogen-activated protein kinase</h1>
 
                 <ul id="place_list">
                 </ul>
@@ -330,7 +330,7 @@ class text_parser:
           var li = document.createElement("li");
           li.innerHTML = ('<div class="atom-loader"><div class="atom-inner atom-one"></div><div class="atom-inner atom-two"></div><div class="atom-inner atom-three"></div><div class="atom-inner atom-four"></div><div class="atom-inner atom-center-one"></div><div class="atom-inner atom-center-two"></div><div class="atom-inner atom-center-three"></div><div class="atom-inner atom-center-four"></div> </div>');
           var span = document.createElement("span");
-          li.className = 'list-element'; span.appendChild(document.createTextNode(molecules[i].name + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" + molecules[i].probability));
+          li.className = 'list-element'; span.appendChild(document.createTextNode(molecules[i].name + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" + molecules[i].probability + "%"));
           li.appendChild(span);
           ul.appendChild(li);
           
